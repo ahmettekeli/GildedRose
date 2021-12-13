@@ -16,8 +16,6 @@ export const Wrapper = styled.div`
   .button-control {
     display: flex;
     justify-content: space-around;
-    /* border-radius: 0 0 20px 20px; */
-    /* padding: 5px 0; */
     width: 100%;
   }
   .edit-button {
@@ -26,6 +24,9 @@ export const Wrapper = styled.div`
     color: ${colors.btnText};
     border: none;
     border-radius: 0 0 0 20px;
+    :hover {
+      background-color: ${colors.editBtnHover};
+    }
   }
   .delete-button {
     min-width: 50%;
@@ -33,6 +34,9 @@ export const Wrapper = styled.div`
     color: ${colors.btnText};
     border: none;
     border-radius: 0 0 20px 0px;
+    :hover {
+      background-color: ${colors.deleteBtnHover};
+    }
   }
   img {
     max-height: 250px;

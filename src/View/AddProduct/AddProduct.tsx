@@ -1,7 +1,7 @@
 import { useState } from "react";
 import moment from "moment";
 import { TextField } from "@material-ui/core";
-import { Wrapper, StyledButton } from "./AddProduct.styles";
+import { Wrapper, AddButton } from "./AddProduct.styles";
 
 function AddProduct() {
   const [name, setName] = useState("");
@@ -52,7 +52,7 @@ function AddProduct() {
           }}
         />
       </div>
-      <StyledButton>Add</StyledButton>
+      <AddButton>Add</AddButton>
     </Wrapper>
   );
 }
