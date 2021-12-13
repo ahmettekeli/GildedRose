@@ -1,14 +1,13 @@
 import { useState } from "react";
-import moment from "moment";
-import { TextField } from "@material-ui/core";
+import { MenuItem, Select, TextField } from "@material-ui/core";
 import { Wrapper, AddButton } from "./AddProduct.styles";
+import { itemEnum } from "../../Logic/Item";
 
 function AddProduct() {
   const [name, setName] = useState("");
-  const [sellinDate, setSellinDate] = useState(
-    moment(new Date()).format("YYYY-MM-DD")
-  );
+  const [sellinDate, setSellinDate] = useState(0);
   const [quality, setQuality] = useState(0);
+  const [itemType, setItemType] = useState<string>(itemEnum.NORMAL);
 
   return (
     <Wrapper>
@@ -30,12 +29,12 @@ function AddProduct() {
           margin="dense"
           id="sellinDate"
           label="Sell in Date"
-          type="date"
+          type="number"
           value={sellinDate}
           fullWidth
           variant="standard"
           onChange={(e) => {
-            setSellinDate(moment(e.target.value).format("YYYY-MM-DD"));
+            setSellinDate(parseInt(e.target.value));
           }}
         />
         <TextField
@@ -51,6 +50,24 @@ function AddProduct() {
             setQuality(parseInt(e.target.value));
           }}
         />
+        <Select
+          labelId="itemType"
+          id="itemType"
+          value={itemType}
+          fullWidth
+          label="Item Type"
+          onChange={(e) => {
+            setItemType(e.target.value as string);
+          }}
+        >
+          <MenuItem value={itemEnum.NORMAL}>{itemEnum.NORMAL}</MenuItem>
+          <MenuItem value={itemEnum.AGED_BRIE}>{itemEnum.AGED_BRIE}</MenuItem>
+          <MenuItem value={itemEnum.BACKSTAGE_PASS}>
+            {itemEnum.BACKSTAGE_PASS}
+          </MenuItem>
+          <MenuItem value={itemEnum.SULFURAS}>{itemEnum.SULFURAS}</MenuItem>
+          <MenuItem value={itemEnum.CONJURED}>{itemEnum.CONJURED}</MenuItem>
+        </Select>
       </div>
       <AddButton>Add</AddButton>
     </Wrapper>

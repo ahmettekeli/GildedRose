@@ -8,7 +8,7 @@ export function isNumberValid(number: number): boolean {
   return true;
 }
 
-export function isDateValid(date: string): boolean {
+export function isRemainingDateValid(date: number): boolean {
   //TODO
-  return true;
+  return date >= 0;
 }

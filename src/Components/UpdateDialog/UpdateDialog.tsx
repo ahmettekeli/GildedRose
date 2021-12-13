@@ -5,12 +5,18 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  MenuItem,
   Snackbar,
+  Select,
   TextField,
 } from "@material-ui/core";
-import moment from "moment";
 import { ProductType } from "../../type";
-import { isTextValid, isDateValid, isNumberValid } from "../../Utils/Utilities";
+import { itemEnum } from "../../Logic/Item";
+import {
+  isTextValid,
+  isRemainingDateValid,
+  isNumberValid,
+} from "../../Utils/Utilities";
 
 function UpdateDialog({
   product,
@@ -26,11 +32,14 @@ function UpdateDialog({
   const [name, setName] = useState("");
   const [quality, setQuality] = useState(0);
   const [sellinDate, setSellinDate] = useState(product.sellInDate);
+  const [itemType, setItemType] = useState(product.itemType);
   const [isAlertOpen, setIsAlertOpen] = useState(false);
 
   function canUpdate() {
     return (
-      isTextValid(name) && isNumberValid(quality) && isDateValid(sellinDate)
+      isTextValid(name) &&
+      isNumberValid(quality) &&
+      isRemainingDateValid(sellinDate)
     );
   }
 
@@ -65,12 +74,12 @@ function UpdateDialog({
             margin="dense"
             id="sellinDate"
             label="Sell in Date"
-            type="date"
-            value={moment(sellinDate).format("YYYY-MM-DD")}
+            type="number"
+            value={sellinDate}
             fullWidth
             variant="standard"
             onChange={(e) => {
-              setSellinDate(moment(e.target.value).format("YYYY-MM-DD"));
+              setSellinDate(parseInt(e.target.value));
             }}
           />
           <TextField
@@ -86,6 +95,24 @@ function UpdateDialog({
               setQuality(parseInt(e.target.value));
             }}
           />
+          <Select
+            labelId="itemType"
+            id="itemType"
+            value={itemType}
+            fullWidth
+            label="Item Type"
+            onChange={(e) => {
+              setItemType(e.target.value as string);
+            }}
+          >
+            <MenuItem value={itemEnum.NORMAL}>{itemEnum.NORMAL}</MenuItem>
+            <MenuItem value={itemEnum.AGED_BRIE}>{itemEnum.AGED_BRIE}</MenuItem>
+            <MenuItem value={itemEnum.BACKSTAGE_PASS}>
+              {itemEnum.BACKSTAGE_PASS}
+            </MenuItem>
+            <MenuItem value={itemEnum.SULFURAS}>{itemEnum.SULFURAS}</MenuItem>
+            <MenuItem value={itemEnum.CONJURED}>{itemEnum.CONJURED}</MenuItem>
+          </Select>
           <DialogActions>
             <Button
               onClick={() => {
