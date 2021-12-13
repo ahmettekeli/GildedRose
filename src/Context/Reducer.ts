@@ -13,6 +13,8 @@ function Reducer(
       return state;
     case actionTypes.CREATE:
       return state;
+    case actionTypes.UPDATE_ALL:
+      return state;
     default:
       return state;
   }
