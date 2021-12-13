@@ -1,0 +1,5 @@
+export enum actionTypes {
+  CREATE = "CREATE_PRODUCT",
+  DELETE = "DELETE_PRODUCT",
+  UPDATE = "UPDATE_PRODUCT",
+}
