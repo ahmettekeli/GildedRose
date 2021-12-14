@@ -1,13 +1,46 @@
-import { useState } from "react";
-import { MenuItem, Select, TextField } from "@material-ui/core";
+import { useContext, useState } from "react";
+import { MenuItem, Select, Snackbar, TextField } from "@material-ui/core";
 import { Wrapper, AddButton } from "./AddProduct.styles";
-import { itemEnum } from "../../Logic/Item";
+import { Item, itemEnum } from "../../Logic/Item";
+import { actionTypesEnum } from "../../Context/ActionTypes";
+import { Context } from "../../Context/Store";
+import {
+  isTextValid,
+  isRemainingDateValid,
+  isNumberValid,
+} from "../../Utils/Utilities";
 
 function AddProduct() {
   const [name, setName] = useState("");
-  const [sellinDate, setSellinDate] = useState(0);
+  const [img, setImg] = useState("");
+  const [sellIn, setSellIn] = useState(0);
   const [quality, setQuality] = useState(0);
   const [itemType, setItemType] = useState<string>(itemEnum.NORMAL);
+  const [isAlertVisible, setIsAlertVisible] = useState(false);
+  const { state, dispatch } = useContext(Context);
+
+  function canAdd() {
+    return (
+      isTextValid(name) &&
+      isNumberValid(quality) &&
+      isRemainingDateValid(sellIn)
+    );
+  }
+  function handleAdd(product: Item) {
+    if (canAdd()) {
+      dispatch({ type: actionTypesEnum.CREATE, payload: product });
+    } else {
+      showAlert();
+    }
+  }
+
+  function showAlert() {
+    setIsAlertVisible(true);
+  }
+
+  function hideAlert() {
+    setIsAlertVisible(false);
+  }
 
   return (
     <Wrapper>
@@ -26,15 +59,28 @@ function AddProduct() {
           }}
         />
         <TextField
+          autoFocus
+          margin="dense"
+          id="img"
+          label="Image Url"
+          type="text"
+          value={img}
+          fullWidth
+          variant="standard"
+          onChange={(e) => {
+            setImg(e.target.value);
+          }}
+        />
+        <TextField
           margin="dense"
           id="sellinDate"
           label="Sell in Date"
           type="number"
-          value={sellinDate}
+          value={sellIn}
           fullWidth
           variant="standard"
           onChange={(e) => {
-            setSellinDate(parseInt(e.target.value));
+            setSellIn(parseInt(e.target.value));
           }}
         />
         <TextField
@@ -69,7 +115,28 @@ function AddProduct() {
           <MenuItem value={itemEnum.CONJURED}>{itemEnum.CONJURED}</MenuItem>
         </Select>
       </div>
-      <AddButton>Add</AddButton>
+      <AddButton
+        onClick={() => {
+          handleAdd(
+            new Item(
+              state.products.length + 1,
+              name,
+              sellIn,
+              quality,
+              img,
+              itemType as itemEnum
+            )
+          );
+        }}
+      >
+        Add
+      </AddButton>
+      <Snackbar
+        open={isAlertVisible}
+        autoHideDuration={6000}
+        onClose={hideAlert}
+        message="Please enter correct values."
+      />
     </Wrapper>
   );
 }

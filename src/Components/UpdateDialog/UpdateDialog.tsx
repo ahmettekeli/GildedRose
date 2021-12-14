@@ -34,7 +34,7 @@ function UpdateDialog({
   const [quality, setQuality] = useState(product.quality);
   const [sellIn, setSellIn] = useState(product.sellIn);
   const [itemType, setItemType] = useState<string>(product.itemType);
-  const [isAlertOpen, setIsAlertOpen] = useState(false);
+  const [isAlertVisible, setAlertVisible] = useState(false);
   const { state, dispatch } = useContext(Context);
 
   function canUpdate() {
@@ -55,11 +55,11 @@ function UpdateDialog({
   }
 
   function hideAlert() {
-    setIsAlertOpen(false);
+    setAlertVisible(false);
   }
 
   function showAlert() {
-    setIsAlertOpen(true);
+    setAlertVisible(true);
   }
 
   return (
@@ -161,7 +161,7 @@ function UpdateDialog({
         </DialogContent>
       </Dialog>
       <Snackbar
-        open={isAlertOpen}
+        open={isAlertVisible}
         autoHideDuration={6000}
         onClose={hideAlert}
         message="Please enter correct values."
