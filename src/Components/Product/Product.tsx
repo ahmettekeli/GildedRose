@@ -1,10 +1,10 @@
 import { useState } from "react";
+import AlertDialog from "../AlertDialog/AlertDialog";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
-import AlertDialog from "../AlertDialog/AlertDialog";
 import UpdateDialog from "../UpdateDialog/UpdateDialog";
-import { Wrapper } from "./Product.styles";
 import { Item } from "../../Logic/Item";
+import { Wrapper } from "./Product.styles";
 
 function Product({ product }: { product: Item }) {
   const [isAlertOpen, setIsAlertOpen] = useState(false);

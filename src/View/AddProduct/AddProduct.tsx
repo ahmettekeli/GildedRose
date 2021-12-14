@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
-import { MenuItem, Select, Snackbar, TextField } from "@material-ui/core";
-import { Wrapper, AddButton } from "./AddProduct.styles";
-import { Item, itemEnum } from "../../Logic/Item";
+import { MenuItem, Select, TextField } from "@material-ui/core";
 import { actionTypesEnum } from "../../Context/ActionTypes";
+import { AddButton, Wrapper } from "./AddProduct.styles";
 import { Context } from "../../Context/Store";
+import { Item, itemEnum } from "../../Logic/Item";
+import Notification from "../../Components/Notification/Notification";
 import { validate } from "../../Utils/Utilities";
 
 function AddProduct() {
@@ -132,11 +133,9 @@ function AddProduct() {
       >
         Add
       </AddButton>
-      <Snackbar
+      <Notification
         open={isAlertVisible}
         onClose={hideAlert}
-        // anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-        autoHideDuration={6000}
         message={alertMessage}
       />
     </Wrapper>

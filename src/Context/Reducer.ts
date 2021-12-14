@@ -1,8 +1,7 @@
 import { actionTypesEnum } from "./ActionTypes";
-import { ProductContextType, ContextActionType } from "../type";
 import { GildedRose } from "../Logic/gilded-rose-refactored";
+import { ProductContextType, ContextActionType } from "../type";
 
-//TODO create reducer actions.
 function Reducer(
   state: ProductContextType,
   action: ContextActionType

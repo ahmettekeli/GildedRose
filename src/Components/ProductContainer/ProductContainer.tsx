@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import Grid from "@material-ui/core/Grid";
 import Product from "../Product/Product";
-import { Context } from "../../Context/Store";
-import { Wrapper, StyledButton } from "./ProductContainer.styles";
-import { Item } from "../../Logic/Item";
 import { actionTypesEnum } from "../../Context/ActionTypes";
+import { Context } from "../../Context/Store";
+import { Item } from "../../Logic/Item";
+import { Wrapper, StyledButton } from "./ProductContainer.styles";
 
 function ProductContainer() {
   const { state, dispatch } = useContext(Context);

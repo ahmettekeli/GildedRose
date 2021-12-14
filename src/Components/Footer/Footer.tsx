@@ -1,5 +1,5 @@
-import IconButton from "@material-ui/core/IconButton";
 import GitHubIcon from "@material-ui/icons/GitHub";
+import IconButton from "@material-ui/core/IconButton";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import { makeStyles, Typography } from "@material-ui/core";
 import { colors, routes, urls } from "../../constants";

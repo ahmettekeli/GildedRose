@@ -6,7 +6,6 @@ import {
   DialogContent,
   DialogTitle,
   MenuItem,
-  Snackbar,
   Select,
   TextField,
 } from "@material-ui/core";
@@ -14,6 +13,7 @@ import { actionTypesEnum } from "../../Context/ActionTypes";
 import { Context } from "../../Context/Store";
 import { Item } from "../../Logic/Item";
 import { itemEnum } from "../../Logic/Item";
+import Notification from "../Notification/Notification";
 import { validate } from "../../Utils/Utilities";
 
 function UpdateDialog({
@@ -157,11 +157,9 @@ function UpdateDialog({
           </DialogActions>
         </DialogContent>
       </Dialog>
-      <Snackbar
+      <Notification
         open={isAlertVisible}
         onClose={hideAlert}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-        autoHideDuration={3000}
         message={alertMessage}
       />
     </>

@@ -5,22 +5,14 @@ export function isTextValid(text: string): boolean {
 }
 
 export function isQualityValid(quality: number, itemType: itemEnum): boolean {
-  if (itemType === itemEnum.SULFURAS) {
-    if (quality === 80) {
-      return true;
-    }
-  } else {
-    if (quality <= 50 && quality > 0) {
-      return true;
-    }
-  }
-  return false;
+  return itemType === itemEnum.SULFURAS
+    ? quality === 80
+    : quality <= 50 && quality > 0;
 }
 
 export function isImageUrlValid(url: string): boolean {
   const regexUrlChecker =
-    /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-  console.log("img valid:", regexUrlChecker.test(url));
+    /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
   return regexUrlChecker.test(url);
 }
 

@@ -1,14 +1,6 @@
 import { actionTypesEnum } from "./ActionTypes";
 import { Item } from "./Logic/Item";
 
-// export type ProductType = {
-//   id: number;
-//   name: string;
-//   img: string;
-//   sellInDate: number;
-//   quality: number;
-//   itemType: string;
-// };
 export type ProductContextType = {
   products: Item[];
 };
