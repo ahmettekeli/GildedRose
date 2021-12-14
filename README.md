@@ -38,10 +38,7 @@ The tools/software below are needed to build/extend this project.
 npm install npm@latest -g
 ```
 
-### Bundled with
-
-- [Babel](https://babeljs.io/)
-- [Webpack](https://webpack.js.org/)
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### Editing/Extending/Usage
 
