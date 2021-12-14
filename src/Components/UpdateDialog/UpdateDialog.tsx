@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   Button,
   Dialog,
@@ -10,7 +10,9 @@ import {
   Select,
   TextField,
 } from "@material-ui/core";
-import { ProductType } from "../../type";
+import { actionTypesEnum } from "../../Context/ActionTypes";
+import { Context } from "../../Context/Store";
+import { Item } from "../../Logic/Item";
 import { itemEnum } from "../../Logic/Item";
 import {
   isTextValid,
@@ -21,26 +23,35 @@ import {
 function UpdateDialog({
   product,
   isOpen,
-  handleUpdate,
   hide,
 }: {
-  product: ProductType;
+  product: Item;
   isOpen: boolean;
-  handleUpdate: (product: ProductType) => void;
   hide: () => void;
 }) {
-  const [name, setName] = useState("");
-  const [quality, setQuality] = useState(0);
-  const [sellinDate, setSellinDate] = useState(product.sellInDate);
-  const [itemType, setItemType] = useState(product.itemType);
+  const [name, setName] = useState(product.name);
+  const [img, setImg] = useState(product.img);
+  const [quality, setQuality] = useState(product.quality);
+  const [sellIn, setSellIn] = useState(product.sellIn);
+  const [itemType, setItemType] = useState<string>(product.itemType);
   const [isAlertOpen, setIsAlertOpen] = useState(false);
+  const { state, dispatch } = useContext(Context);
 
   function canUpdate() {
     return (
       isTextValid(name) &&
       isNumberValid(quality) &&
-      isRemainingDateValid(sellinDate)
+      isRemainingDateValid(sellIn)
     );
+  }
+
+  function handleUpdate(product: Item) {
+    hide();
+    if (canUpdate()) {
+      dispatch({ type: actionTypesEnum.UPDATE, payload: product });
+    } else {
+      showAlert();
+    }
   }
 
   function hideAlert() {
@@ -61,8 +72,8 @@ function UpdateDialog({
             margin="dense"
             id="name"
             label="Product Name"
-            type="name"
-            value={product.name}
+            type="text"
+            value={name}
             fullWidth
             variant="standard"
             onChange={(e) => {
@@ -72,14 +83,27 @@ function UpdateDialog({
           <TextField
             autoFocus
             margin="dense"
-            id="sellinDate"
-            label="Sell in Date"
-            type="number"
-            value={sellinDate}
+            id="img"
+            label="Image Url"
+            type="text"
+            value={img}
             fullWidth
             variant="standard"
             onChange={(e) => {
-              setSellinDate(parseInt(e.target.value));
+              setImg(e.target.value);
+            }}
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="sellIn"
+            label="Sell in Date"
+            type="number"
+            value={sellIn}
+            fullWidth
+            variant="standard"
+            onChange={(e) => {
+              setSellIn(parseInt(e.target.value));
             }}
           />
           <TextField
@@ -88,7 +112,7 @@ function UpdateDialog({
             id="quality"
             label="Quality"
             type="number"
-            value={product.quality}
+            value={quality}
             fullWidth
             variant="standard"
             onChange={(e) => {
@@ -116,12 +140,16 @@ function UpdateDialog({
           <DialogActions>
             <Button
               onClick={() => {
-                hide();
-                if (canUpdate()) {
-                  handleUpdate(product);
-                } else {
-                  showAlert();
-                }
+                handleUpdate(
+                  new Item(
+                    product.id,
+                    name,
+                    sellIn,
+                    quality,
+                    img,
+                    itemType as itemEnum
+                  )
+                );
               }}
             >
               Update

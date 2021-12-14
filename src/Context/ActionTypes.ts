@@ -1,6 +1,6 @@
-export enum actionTypes {
+export enum actionTypesEnum {
   CREATE = "CREATE_PRODUCT",
   DELETE = "DELETE_PRODUCT",
   UPDATE = "UPDATE_PRODUCT",
-  UPDATE_ALL = "UPDATE_ALL_PRODUCTS",
+  PASS_DAY = "PASS_DAY",
 }

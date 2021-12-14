@@ -1,19 +1,20 @@
-import { UPDATE_SELLIN, UPDATE_QUALITY } from "./ActionTypes";
+import { actionTypesEnum } from "./ActionTypes";
+import { Item } from "./Logic/Item";
 
-export type ProductType = {
-  id: number;
-  name: string;
-  img: string;
-  sellInDate: number;
-  quality: number;
-  itemType: string;
-};
+// export type ProductType = {
+//   id: number;
+//   name: string;
+//   img: string;
+//   sellInDate: number;
+//   quality: number;
+//   itemType: string;
+// };
 export type ProductContextType = {
-  products: ProductType[];
+  products: Item[];
 };
 export type ContextActionType = {
-  type: UPDATE_SELLIN | UPDATE_QUALITY;
-  payload: ProductContextType;
+  type: actionTypesEnum;
+  payload: Item;
 };
 
 export enum itemEnum {

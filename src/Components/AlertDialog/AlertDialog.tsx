@@ -1,5 +1,5 @@
 import { Button, Dialog, DialogActions, DialogTitle } from "@material-ui/core";
-import { ProductType } from "../../type";
+import { Item } from "../../Logic/Item";
 
 function AlertDialog({
   product,
@@ -7,7 +7,7 @@ function AlertDialog({
   hide,
   handleDelete,
 }: {
-  product: ProductType;
+  product: Item;
   isOpen: boolean;
   hide: () => void;
   handleDelete: (id: number) => void;

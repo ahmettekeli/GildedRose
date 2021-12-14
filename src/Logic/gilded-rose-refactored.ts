@@ -7,9 +7,9 @@ export class GildedRose {
     this.items = items;
   }
 
-  passDayForNormal(item: Item) {
+  static passDayForNormal(item: Item) {
     item.sellIn -= 1;
-    if (item.quality == 0) {
+    if (item.quality === 0) {
       return;
     }
     item.quality -= 1;
@@ -18,7 +18,7 @@ export class GildedRose {
     }
   }
 
-  passDayForAgedBrie(item: Item) {
+  static passDayForAgedBrie(item: Item) {
     item.sellIn -= 1;
     if (item.quality >= 50) {
       return;
@@ -29,7 +29,7 @@ export class GildedRose {
     }
   }
 
-  passDayForBackstagePass(item: Item) {
+  static passDayForBackstagePass(item: Item) {
     item.sellIn -= 1;
     //in case its quality previously increased to 50
     if (item.quality >= 50) {
@@ -48,9 +48,9 @@ export class GildedRose {
     }
   }
 
-  passDayForConjured(item: Item) {
+  static passDayForConjured(item: Item) {
     item.sellIn -= 1;
-    if (item.quality == 0) {
+    if (item.quality === 0) {
       return;
     }
     item.quality -= 2;
@@ -59,16 +59,16 @@ export class GildedRose {
     }
   }
 
-  passDayForSulfuras(item: Item) {
+  static passDayForSulfuras(item: Item) {
     item.sellIn -= 1;
-    if (item.quality == 80) {
+    if (item.quality === 80) {
       return;
     }
     item.quality = 80;
   }
 
-  passDayForAll() {
-    this.items.forEach((item) => {
+  static passDayForAll(items: Array<Item>) {
+    items.forEach((item) => {
       switch (item.itemType) {
         case itemEnum.NORMAL:
           this.passDayForNormal(item);
@@ -89,5 +89,6 @@ export class GildedRose {
           break;
       }
     });
+    return items;
   }
 }

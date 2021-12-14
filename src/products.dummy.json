@@ -3,7 +3,7 @@
     "id": 1,
     "img": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
     "name": "Product 1",
-    "sellInDate": 9,
+    "sellIn": 9,
     "quality": 80,
     "itemType": "sulfuras"
   },
@@ -11,7 +11,7 @@
     "id": 2,
     "name": "Product 2",
     "img": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
-    "sellInDate": 6,
+    "sellIn": 6,
     "quality": 30,
     "itemType": "aged brie"
   },
@@ -19,7 +19,7 @@
     "id": 3,
     "img": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
     "name": "Product 3",
-    "sellInDate": 5,
+    "sellIn": 5,
     "quality": 20,
     "itemType": "normal"
   },
@@ -27,7 +27,7 @@
     "id": 4,
     "img": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
     "name": "Product 4",
-    "sellInDate": 0,
+    "sellIn": 0,
     "quality": 10,
     "itemType": "conjured"
   }

@@ -4,15 +4,13 @@ import EditIcon from "@material-ui/icons/Edit";
 import AlertDialog from "../AlertDialog/AlertDialog";
 import UpdateDialog from "../UpdateDialog/UpdateDialog";
 import { Wrapper } from "./Product.styles";
-import { ProductType } from "../../type";
+import { Item } from "../../Logic/Item";
 
 function Product({
   product,
-  handleUpdate,
   handleDelete,
 }: {
-  product: ProductType;
-  handleUpdate: (product: ProductType) => void;
+  product: Item;
   handleDelete: (id: number) => void;
 }) {
   const [isAlertOpen, setIsAlertOpen] = useState(false);
@@ -39,7 +37,7 @@ function Product({
         <img src={product.img} alt={product.name} />
         <div className="product-info">
           <h3>{product.name}</h3>
-          <p>{`Quality: ${product.quality}  Sell in Date: ${product.sellInDate}`}</p>
+          <p>{`Quality: ${product.quality}  Sell in Date: ${product.sellIn}`}</p>
         </div>
         <div className="button-control">
           <button
@@ -59,9 +57,6 @@ function Product({
         product={product}
         isOpen={isUpdateDialogOpen}
         hide={hideUpdatedialog}
-        handleUpdate={() => {
-          handleUpdate(product);
-        }}
       />
       <AlertDialog
         product={product}
