@@ -6,7 +6,7 @@ export type ProductContextType = {
 };
 export type ContextActionType = {
   type: actionTypesEnum;
-  payload: Item;
+  payload: Item | Item[];
 };
 
 export enum itemEnum {

@@ -1,34 +1,52 @@
-[
-  {
-    "id": 1,
-    "img": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-    "name": "Product 1",
-    "sellIn": 9,
-    "quality": 80,
-    "itemType": "sulfuras"
-  },
-  {
-    "id": 2,
-    "name": "Product 2",
-    "img": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
-    "sellIn": 6,
-    "quality": 30,
-    "itemType": "aged brie"
-  },
-  {
-    "id": 3,
-    "img": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
-    "name": "Product 3",
-    "sellIn": 5,
-    "quality": 20,
-    "itemType": "normal"
-  },
-  {
-    "id": 4,
-    "img": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-    "name": "Product 4",
-    "sellIn": 0,
-    "quality": 10,
-    "itemType": "conjured"
-  }
-]
+{
+  "products": [
+    {
+      "id": 1,
+      "img": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "name": "Product 1",
+      "sellIn": 9,
+      "quality": 80,
+      "itemType": "sulfuras"
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "img": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+      "sellIn": 6,
+      "quality": 30,
+      "itemType": "aged brie"
+    },
+    {
+      "id": 3,
+      "img": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
+      "name": "Product 3",
+      "sellIn": 5,
+      "quality": 20,
+      "itemType": "normal"
+    },
+    {
+      "id": 4,
+      "img": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "name": "Product 4",
+      "sellIn": 0,
+      "quality": 10,
+      "itemType": "conjured"
+    },
+    {
+      "id": 5,
+      "img": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
+      "name": "Product 5",
+      "sellIn": 3,
+      "quality": 15,
+      "itemType": "normal"
+    },
+    {
+      "id": 6,
+      "img": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
+      "name": "Product 5",
+      "sellIn": 1,
+      "quality": 18,
+      "itemType": "aged brie"
+    }
+  ]
+}

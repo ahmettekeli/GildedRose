@@ -49,10 +49,12 @@ export const urls: {
   linkedin: string;
   logoUrl: string;
   welcomeImgUrl: string;
+  mockApiUrl: string;
 } = {
   linkedin: "https://www.linkedin.com/in/tekeliahmet/",
   github: "https://github.com/ahmettekeli",
   logoUrl:
     "https://previews.123rf.com/images/wahyufrida/wahyufrida1909/wahyufrida190900496/130156377-store-icon-logo-vector-illustration-design.jpg",
   welcomeImgUrl: "https://i.ibb.co/T06DTrW/The-Gilded-Rose.jpg",
+  mockApiUrl: "https://61b8df3a38f69a0017ce5de3.mockapi.io/api/v1/products",
 };
