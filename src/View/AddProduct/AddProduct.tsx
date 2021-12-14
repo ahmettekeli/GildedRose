@@ -4,11 +4,7 @@ import { Wrapper, AddButton } from "./AddProduct.styles";
 import { Item, itemEnum } from "../../Logic/Item";
 import { actionTypesEnum } from "../../Context/ActionTypes";
 import { Context } from "../../Context/Store";
-import {
-  isTextValid,
-  isRemainingDateValid,
-  isNumberValid,
-} from "../../Utils/Utilities";
+import { validate } from "../../Utils/Utilities";
 
 function AddProduct() {
   const [name, setName] = useState("");
@@ -17,19 +13,24 @@ function AddProduct() {
   const [quality, setQuality] = useState(0);
   const [itemType, setItemType] = useState<string>(itemEnum.NORMAL);
   const [isAlertVisible, setIsAlertVisible] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
   const { state, dispatch } = useContext(Context);
+  const successMessage = "Added product.";
 
-  function canAdd() {
-    return (
-      isTextValid(name) &&
-      isNumberValid(quality) &&
-      isRemainingDateValid(sellIn)
-    );
-  }
   function handleAdd(product: Item) {
-    if (canAdd()) {
+    const { isValid, message } = validate(
+      name,
+      img,
+      quality,
+      sellIn,
+      itemType as itemEnum
+    );
+    if (isValid) {
       dispatch({ type: actionTypesEnum.CREATE, payload: product });
+      setAlertMessage(successMessage);
+      showAlert();
     } else {
+      setAlertMessage(message);
       showAlert();
     }
   }
@@ -133,9 +134,10 @@ function AddProduct() {
       </AddButton>
       <Snackbar
         open={isAlertVisible}
-        autoHideDuration={6000}
         onClose={hideAlert}
-        message="Please enter correct values."
+        // anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        autoHideDuration={6000}
+        message={alertMessage}
       />
     </Wrapper>
   );

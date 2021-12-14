@@ -44,7 +44,20 @@ export const Wrapper = styled.div`
     border-radius: 20px 20px 0 0;
   }
   .product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-family: Arial, Helvetica, sans-serif;
     height: 100%;
+  }
+  .product-detail {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    div {
+      margin: 0.5rem;
+    }
   }
 `;

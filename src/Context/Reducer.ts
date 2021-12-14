@@ -16,7 +16,6 @@ function Reducer(
         return product;
       });
       return {
-        ...state,
         products: updatedProducts as typeof state.products,
       };
     case actionTypesEnum.DELETE:
@@ -24,19 +23,16 @@ function Reducer(
         (product) => product.id !== action.payload.id
       );
       return {
-        ...state,
         products: filteredProducts,
       };
     case actionTypesEnum.CREATE:
       return {
-        ...state,
         products: [...state.products, action.payload],
       };
     case actionTypesEnum.PASS_DAY:
-      // return {
-      //   products: GildedRose.passDayForAll(state.products),
-      // };
-      return state;
+      return {
+        products: GildedRose.passDayForAll(state.products),
+      };
     default:
       return state;
   }

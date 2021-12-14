@@ -6,13 +6,7 @@ import UpdateDialog from "../UpdateDialog/UpdateDialog";
 import { Wrapper } from "./Product.styles";
 import { Item } from "../../Logic/Item";
 
-function Product({
-  product,
-  handleDelete,
-}: {
-  product: Item;
-  handleDelete: (id: number) => void;
-}) {
+function Product({ product }: { product: Item }) {
   const [isAlertOpen, setIsAlertOpen] = useState(false);
   const [isUpdateDialogOpen, setIsUpdateDialogOpen] = useState(false);
 
@@ -37,7 +31,11 @@ function Product({
         <img src={product.img} alt={product.name} />
         <div className="product-info">
           <h3>{product.name}</h3>
-          <p>{`Quality: ${product.quality}  Sell in Date: ${product.sellIn}`}</p>
+          <div className="product-detail">
+            <div>{`Quality: ${product.quality}`}</div>
+            <div>{`Sell in: ${product.sellIn}`}</div>
+            <div>{`Type: ${product.itemType}`}</div>
+          </div>
         </div>
         <div className="button-control">
           <button
@@ -58,12 +56,7 @@ function Product({
         isOpen={isUpdateDialogOpen}
         hide={hideUpdatedialog}
       />
-      <AlertDialog
-        product={product}
-        isOpen={isAlertOpen}
-        hide={hideAlert}
-        handleDelete={handleDelete}
-      />
+      <AlertDialog product={product} isOpen={isAlertOpen} hide={hideAlert} />
     </>
   );
 }

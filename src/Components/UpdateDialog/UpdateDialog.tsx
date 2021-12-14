@@ -14,11 +14,7 @@ import { actionTypesEnum } from "../../Context/ActionTypes";
 import { Context } from "../../Context/Store";
 import { Item } from "../../Logic/Item";
 import { itemEnum } from "../../Logic/Item";
-import {
-  isTextValid,
-  isRemainingDateValid,
-  isNumberValid,
-} from "../../Utils/Utilities";
+import { validate } from "../../Utils/Utilities";
 
 function UpdateDialog({
   product,
@@ -35,21 +31,22 @@ function UpdateDialog({
   const [sellIn, setSellIn] = useState(product.sellIn);
   const [itemType, setItemType] = useState<string>(product.itemType);
   const [isAlertVisible, setAlertVisible] = useState(false);
-  const { state, dispatch } = useContext(Context);
-
-  function canUpdate() {
-    return (
-      isTextValid(name) &&
-      isNumberValid(quality) &&
-      isRemainingDateValid(sellIn)
-    );
-  }
+  const [alertMessage, setAlertMessage] = useState("");
+  const { dispatch } = useContext(Context);
 
   function handleUpdate(product: Item) {
+    const { isValid, message } = validate(
+      name,
+      img,
+      quality,
+      sellIn,
+      itemType as itemEnum
+    );
     hide();
-    if (canUpdate()) {
+    if (isValid) {
       dispatch({ type: actionTypesEnum.UPDATE, payload: product });
     } else {
+      setAlertMessage(message);
       showAlert();
     }
   }
@@ -162,9 +159,10 @@ function UpdateDialog({
       </Dialog>
       <Snackbar
         open={isAlertVisible}
-        autoHideDuration={6000}
         onClose={hideAlert}
-        message="Please enter correct values."
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        autoHideDuration={3000}
+        message={alertMessage}
       />
     </>
   );
