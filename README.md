@@ -2,7 +2,8 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 # Gilded Rose Kata - Partial Store Management
-## Build with Typescript - React
+
+## Build with Typescript - React - [Live Demo](https://gildedrose.netlify.app/)
 
 ## Available Scripts
 
@@ -20,7 +21,6 @@ You will also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 
 ## About The Project
 
@@ -55,7 +55,6 @@ npm install
 ```
 
 3. Make changes and improve
-
 
 ## Contributing
 
