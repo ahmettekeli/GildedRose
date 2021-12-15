@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   Button,
   Dialog,
@@ -58,6 +58,20 @@ function UpdateDialog({
   function showAlert() {
     setAlertVisible(true);
   }
+
+  useEffect(() => {
+    setName(product.name);
+    setImg(product.img);
+    setQuality(product.quality);
+    setSellIn(product.sellIn);
+    setItemType(product.itemType);
+  }, [
+    product.name,
+    product.img,
+    product.quality,
+    product.sellIn,
+    product.itemType,
+  ]);
 
   return (
     <>

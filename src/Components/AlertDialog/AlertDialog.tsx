@@ -14,9 +14,8 @@ function AlertDialog({
   hide: () => void;
 }) {
   const { dispatch } = useContext(Context);
-  function handleDelete(id: number): void {
+  function handleDelete(product: Item): void {
     dispatch({ type: actionTypesEnum.DELETE, payload: product });
-    console.log("deleting");
   }
   return (
     <Dialog open={isOpen} onClose={hide} aria-labelledby="alert-dialog-title">
@@ -26,7 +25,7 @@ function AlertDialog({
         <Button
           onClick={() => {
             hide();
-            handleDelete(product.id);
+            handleDelete(product);
           }}
         >
           Yes

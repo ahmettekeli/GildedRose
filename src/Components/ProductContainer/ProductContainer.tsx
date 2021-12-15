@@ -14,15 +14,17 @@ function ProductContainer() {
   }
 
   useEffect(() => {
-    fetch(urls.mockApiUrl)
-      .then((res) => res.json())
-      .then((data) =>
-        dispatch({ type: actionTypesEnum.GET_PRODUCTS, payload: data })
-      )
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [dispatch]);
+    if (state.products.length <= 0) {
+      fetch(urls.mockApiUrl)
+        .then((res) => res.json())
+        .then((data) =>
+          dispatch({ type: actionTypesEnum.GET_PRODUCTS, payload: data })
+        )
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [dispatch, state.products.length]);
   return (
     <Wrapper>
       <Grid container spacing={3}>
